@@ -9,7 +9,12 @@ from src.normalizer import normalize
 from src.similarity import jaccard, cosine_tf, levenshtein_ratio
 from src.tokenizer import char_ngrams
 from src.shingler import as_set, as_bag
+from src.io_utils import read_text  # 新增：用于覆盖 io_utils 分支
 
+
+# -----------------------
+# 基础功能与单位函数测试
+# -----------------------
 
 def test_normalize_basic():
     assert normalize("天气，晴！\n") == "天气晴"
@@ -40,6 +45,10 @@ def test_levenshtein_ratio_known_case():
     expected = 1 - 3 / 7
     assert levenshtein_ratio("kitten", "sitting") == pytest.approx(expected, rel=1e-6)
 
+
+# -----------------------
+# pipeline 主流程测试
+# -----------------------
 
 def test_pipeline_chinese_example():
     orig = "今天是星期天，天气晴，今天晚上我要去看电影。"
@@ -78,7 +87,9 @@ def test_edit_fallback_extension():
     assert s_yes >= s_no
 
 
-import contextlib
+# -----------------------
+# CLI 集成测试
+# -----------------------
 
 def test_cli_behavior(tmp_path: Path):
     proj_root = Path(__file__).resolve().parents[1]
@@ -105,3 +116,25 @@ def test_cli_behavior(tmp_path: Path):
     assert re.fullmatch(r"\d+\.\d{2}", out) is not None
     val = float(out)
     assert 0.0 <= val <= 100.0
+
+
+def test_pipeline_cosine_branch():
+    """命中 pipeline.py 的 else 分支（cosine 路径）。"""
+    a, b = "abc", "abd"
+    s = compute_similarity(a, b, Config(method="cosine", n=3))  # 非 jaccard
+    assert 0.0 <= s <= 1.0
+
+
+def test_io_read_text_missing_file(tmp_path):
+    """命中 io_utils.py:6 的 FileNotFoundError 分支。"""
+    missing = tmp_path / "no_such_file.txt"
+    with pytest.raises(FileNotFoundError):
+        read_text(missing)
+
+
+def test_io_read_text_gb18030_fallback(tmp_path):
+    """命中 io_utils.py:9-10 的 gb18030 回退分支。"""
+    s = "天气晴朗，我晚上要去看电影。"
+    p = tmp_path / "gb.txt"
+    p.write_bytes(s.encode("gb18030"))  # 故意用 gb18030 写，触发 UTF-8 解码失败
+    assert read_text(p) == s
