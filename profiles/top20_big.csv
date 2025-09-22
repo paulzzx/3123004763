@@ -1,0 +1,21 @@
+rank,func,calls,primitive_calls,tottime,cumtime
+1,<frozen runpy>:262::run_path,1,1,1.4624000000000001e-05,0.150703375
+2,~:0::<built-in method builtins.exec>,12,2,0.0005109170000000001,0.148981041
+3,<frozen runpy>:91::_run_module_code,1,1,1.675e-05,0.148812417
+4,<frozen runpy>:65::_run_code,1,1,1.7920000000000002e-06,0.148786792
+5,main.py:1::<module>,1,1,5.6625e-05,0.148781042
+6,main.py:31::safe_main,1,1,0.003427874,0.139039417
+7,pipeline.py:16::compute_similarity,1,1,0.000492377,0.13321275000000002
+8,normalizer.py:8::normalize,2,2,4.2208e-05,0.10120166600000001
+9,~:0::<built-in method unicodedata.normalize>,2,2,0.060786167,0.060786167
+10,~:0::<method 'translate' of 'str' objects>,3,3,0.030829541000000002,0.030829541000000002
+11,tokenizer.py:3::char_ngrams,2,2,0.022017417,0.022018167
+12,<frozen importlib._bootstrap>:1349::_find_and_load,13,4,5.9585000000000006e-05,0.010638417
+13,<frozen importlib._bootstrap>:1304::_find_and_load_unlocked,13,4,4.1589000000000004e-05,0.010502333
+14,<frozen importlib._bootstrap>:911::_load_unlocked,13,5,4.079e-05,0.009923083000000001
+15,<frozen importlib._bootstrap_external>:1020::exec_module,10,5,2.3293000000000002e-05,0.009793501000000001
+16,<frozen importlib._bootstrap>:480::_call_with_frames_removed,29,9,1.929e-05,0.008348249
+17,__init__.py:183::sub,3,3,1.5083000000000001e-05,0.008131625
+18,shingler.py:4::as_set,2,2,0.008003041,0.008003041
+19,~:0::<method 'sub' of 're.Pattern' objects>,3,3,0.007917584,0.007924625000000001
+20,pipeline.py:1::<module>,1,1,2.1002e-05,0.007632208000000001

@@ -1,0 +1,21 @@
+rank,func,calls,primitive_calls,tottime,cumtime
+1,<frozen runpy>:262::run_path,1,1,1.5752e-05,0.027132709
+2,~:0::<built-in method builtins.exec>,12,2,0.000513419,0.025396833
+3,<frozen runpy>:91::_run_module_code,1,1,1.3126000000000001e-05,0.025238667000000003
+4,<frozen runpy>:65::_run_code,1,1,1.542e-06,0.025216958
+5,main.py:1::<module>,1,1,1.4750000000000001e-05,0.025210875
+6,main.py:31::safe_main,1,1,0.000241253,0.015547917000000001
+7,pipeline.py:16::compute_similarity,1,1,0.00028166700000000004,0.013478083
+8,<frozen importlib._bootstrap>:1349::_find_and_load,13,4,6.0798e-05,0.010582917
+9,<frozen importlib._bootstrap>:1304::_find_and_load_unlocked,13,4,4.2248e-05,0.010446541
+10,<frozen importlib._bootstrap>:911::_load_unlocked,13,5,4.1707000000000006e-05,0.009857333000000001
+11,<frozen importlib._bootstrap_external>:1020::exec_module,10,5,2.3457000000000003e-05,0.009718333000000001
+12,normalizer.py:8::normalize,2,2,1.2419000000000001e-05,0.008895417000000001
+13,<frozen importlib._bootstrap>:480::_call_with_frames_removed,29,9,2.1747e-05,0.008384500000000001
+14,pipeline.py:1::<module>,1,1,1.9294000000000002e-05,0.007744000000000001
+15,~:0::<built-in method unicodedata.normalize>,2,2,0.005404416,0.005404416
+16,normalizer.py:1::<module>,1,1,2.1707e-05,0.003993
+17,<frozen importlib._bootstrap_external>:1093::get_code,10,10,7.4708e-05,0.00320921
+18,<frozen importlib._bootstrap>:806::module_from_spec,13,13,2.4672e-05,0.0030736680000000003
+19,<frozen importlib._bootstrap_external>:1318::create_module,2,2,3.7520000000000002e-06,0.0028330010000000004
+20,~:0::<built-in method _imp.create_dynamic>,2,2,0.002826083,0.002826083
